@@ -7,6 +7,6 @@ Route::prefix("test", function(){
 
 Route::get("register","auth/register/index");
 Route::post("register","auth/register/action");
-Route::get("login","auth/login");
-Route::post("login","auth/authenticated");
-Route::get("profile","auth/profile");
+Route::get("login","auth/login/index");
+Route::post("login","auth/login/action");
+Route::get("profile","profile/index");

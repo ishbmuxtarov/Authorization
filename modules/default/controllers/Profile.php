@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_Controller {
+class Profile extends MY_Controller {
 
   function __construct()
   {
@@ -10,13 +10,7 @@ class Login extends MY_Controller {
 
   public function index()
   {
-    $this->view(['auth/login']);
-  }
-
-  public function action()
-  {
-    $this->view(['auth/login']);
-
+    $this->view(['profile']);
   }
 
   function errorPage()
