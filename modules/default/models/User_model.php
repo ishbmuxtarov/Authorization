@@ -1,41 +1,33 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- *
- */
 class User_model extends CI_Model
 {
+  public $first_name;
+  public $last_name;
+  public $email;
+  public $birthday;
+  public $password;
+  public $date;
+
   public function __construct() {
-        parent::__construct();
-        $this->load->database();
+    parent::__construct();
+    $this->load->database();
   }
 
-  public $title;
-        public $content;
-        public $date;
+  public function get_last_ten_entries() {
+    $query = $this->db->get("entries", 10);
+    return $query->result();
+  }
 
-        public function get_last_ten_entries()
-        {
-                $query = $this->db->get('entries', 10);
-                return $query->result();
-        }
+  public function insert_entry() {
+    $this->first_name    = $params["first_name"];
+    $this->last_name  = $params["last_name"];
+    $this->email  = $params["email"];
+    $this->birthday  = $params["birthday"];
+    $this->password  = $params["password"];
+    $this->date     = time();
 
-        public function insert_entry()
-        {
-                $this->title    = $_POST['title']; // please read the below note
-                $this->content  = $_POST['content'];
-                $this->date     = time();
-
-                $this->db->insert('entries', $this);
-        }
-
-        public function update_entry()
-        {
-                $this->title    = $_POST['title'];
-                $this->content  = $_POST['content'];
-                $this->date     = time();
-
-                $this->db->update('entries', $this, array('id' => $_POST['id']));
-        }
+    $this->db->insert('entries', $this);
+  }
 }
